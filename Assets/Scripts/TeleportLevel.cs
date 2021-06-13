@@ -10,7 +10,7 @@ public class TeleportLevel : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (this.tag == "End" && collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(LevelToLoad);
         }
