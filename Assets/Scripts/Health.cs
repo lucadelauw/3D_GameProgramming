@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour {
 	
@@ -18,17 +17,14 @@ public class Health : MonoBehaviour {
 	
 	public string LevelToLoad = "";
 	
-	private Vector3 respawnPosition;
-	private Quaternion respawnRotation;
-	
+	public  GameObject respawnPoint;
+
 
 	// Use this for initialization
 	void Start () 
 	{
 		// store initial position as respawn location
-		respawnPosition = transform.position;
-		respawnRotation = transform.rotation;
-		
+
 		if (LevelToLoad=="") // default to current scene 
 		{
 			LevelToLoad = Application.loadedLevelName;
@@ -46,8 +42,8 @@ public class Health : MonoBehaviour {
 			}
 			
 			if (numberOfLives > 0) { // respawn
-				transform.position = respawnPosition;	// reset the player to respawn position
-				transform.rotation = respawnRotation;
+				transform.position = respawnPoint.transform.position;	// reset the player to respawn position
+				transform.rotation = respawnPoint.transform.rotation;
 				healthPoints = respawnHealthPoints;	// give the player full health again
 			} else { // here is where you do stuff once ALL lives are gone)
 				isAlive = false;
@@ -55,7 +51,7 @@ public class Health : MonoBehaviour {
 				switch(onLivesGone)
 				{
 				case deathAction.loadLevelWhenDead:
-					SceneManager.LoadScene(LevelToLoad);
+					Application.LoadLevel (LevelToLoad);
 					break;
 				case deathAction.doNothingWhenDead:
 					// do nothing, death must be handled in another way elsewhere
@@ -81,8 +77,8 @@ public class Health : MonoBehaviour {
 		numberOfLives = numberOfLives + amount;
 	}
 	
-	public void updateRespawn(Vector3 newRespawnPosition, Quaternion newRespawnRotation) {
-		respawnPosition = newRespawnPosition;
-		respawnRotation = newRespawnRotation;
+	public void updateRespawn(GameObject newRespawnPoint)
+	{
+		respawnPoint = newRespawnPoint;
 	}
 }
