@@ -5,19 +5,16 @@ using UnityEngine.UI;
 
 public class OpenChest : MonoBehaviour
 {
-    static string counterkeys = "";
-    int parsed = 0;
-    static int countercoin = 0;
     private bool hasCollided = false;
     private string labelText = "";
     private GameObject ChestOpen;
+    private GameObject player;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        counterkeys = GameObject.FindGameObjectWithTag("keys").GetComponent<Text>().text;
-        parsed = int.Parse(counterkeys);
+        player = GameObject.FindWithTag("Player");
         ChestOpen = GameObject.FindGameObjectWithTag("chestopen");
     }
 
@@ -26,14 +23,11 @@ public class OpenChest : MonoBehaviour
     {
         if (Input.GetKey("e") && hasCollided)
         {
-            Debug.Log(parsed);
-            Debug.Log(counterkeys);
-            if (parsed != 0)
+            var playerProperties = player.GetComponent<PlayerProperties>();
+            if (playerProperties.keys >= 1)
             {
-                countercoin += 5;
-                GameObject.FindGameObjectWithTag("coins").GetComponent<Text>().text = countercoin.ToString();
-                parsed -= 1;
-                GameObject.FindGameObjectWithTag("keys").GetComponent<Text>().text = parsed.ToString();
+                player.GetComponent<PlayerProperties>().SetCoins(playerProperties.coins + 5);
+                player.GetComponent<PlayerProperties>().SetKeys(playerProperties.keys - 1);
                 Destroy(gameObject);
                 GameObject newChest = Instantiate(ChestOpen);
             }
@@ -52,14 +46,9 @@ public class OpenChest : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
-
         {
-
             hasCollided = true;
             labelText = "Hit E to interact!";
-
-
-
         }
     }
 
