@@ -33,7 +33,7 @@ public class OpenChest : MonoBehaviour
                 countercoin += 5;
                 GameObject.FindGameObjectWithTag("coins").GetComponent<Text>().text = countercoin.ToString();
                 parsed -= 1;
-                GameObject.FindGameObjectWithTag("keys").GetComponent<Text>().text = counter.ToString();
+                GameObject.FindGameObjectWithTag("keys").GetComponent<Text>().text = parsed.ToString();
                 Destroy(gameObject);
                 GameObject newChest = Instantiate(chestopen);
             }
