@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2634691235317865168}
   - component: {fileID: 6470347783944265958}
   - component: {fileID: 790314030885510175}
-  - component: {fileID: 3397548042789051514}
   - component: {fileID: 1727880785303367206}
+  - component: {fileID: 1468841261553860985}
   m_Layer: 0
   m_Name: rust_key
   m_TagString: Untagged
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3397548042789051514
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354198518899812547}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1215533875317036940, guid: 0669f3d8f4b119f418a4bbe061cc198f, type: 3}
 --- !u!114 &1727880785303367206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,3 +95,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5515258a590119a4f9855ce203be53d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1468841261553860985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354198518899812547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: -0.0000038146973, y: -9.313228e-10, z: 0.000000003725291}
