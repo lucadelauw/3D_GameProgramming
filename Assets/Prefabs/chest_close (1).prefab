@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5566089493541730460}
   - component: {fileID: 5566089493540764252}
   - component: {fileID: 6416709965362931469}
+  - component: {fileID: -7651361984504922001}
   m_Layer: 0
   m_Name: chest_close (1)
   m_TagString: Untagged
@@ -94,4 +95,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf164ad78919bb4597e23401689dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestopen: {fileID: 0}
+--- !u!65 &-7651361984504922001
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566089493542691996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: -0.02920004, y: 0.0020999922, z: 0.26805004}

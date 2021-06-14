@@ -8,6 +8,10 @@ public class pressE : MonoBehaviour
     private bool hasCollided = false;
     private string labelText = "";
     private GameObject stone;
+
+
+    private int counter = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +24,13 @@ public class pressE : MonoBehaviour
         if (Input.GetKey("e") && hasCollided)
         {
             stone = GameObject.FindGameObjectWithTag("stone");
-            while (stone.transform.position.z != 19)
+ 
+
+            while (counter != 10)
             {
-                stone.transform.position = new Vector3(0, 0, 2 * Time.deltaTime); //x,y,z
+                stone.transform.position += new Vector3(0,0,1);
+                Debug.Log(stone.transform.position.z);
+                counter++;
             }
         }
     }
