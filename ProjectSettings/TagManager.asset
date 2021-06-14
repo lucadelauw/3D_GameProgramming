@@ -6,6 +6,7 @@ TagManager:
   tags:
   - keys
   - chestopen
+  - stone
   layers:
   - Default
   - TransparentFX

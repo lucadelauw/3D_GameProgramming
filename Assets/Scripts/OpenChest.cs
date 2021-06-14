@@ -7,6 +7,7 @@ public class OpenChest : MonoBehaviour
 {
     static string counter = "";
     int parsed = 0;
+    static int countercoin = 0;
 
     public GameObject chestopen;
 
@@ -29,6 +30,8 @@ public class OpenChest : MonoBehaviour
         {
             if (parsed != 0)
             {
+                countercoin += 5;
+                GameObject.FindGameObjectWithTag("coins").GetComponent<Text>().text = countercoin.ToString();
                 parsed -= 1;
                 GameObject.FindGameObjectWithTag("keys").GetComponent<Text>().text = counter.ToString();
                 Destroy(gameObject);
