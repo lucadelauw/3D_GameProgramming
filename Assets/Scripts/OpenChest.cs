@@ -7,7 +7,7 @@ public class OpenChest : MonoBehaviour
 {
     private bool hasCollided = false;
     private string labelText = "";
-    private GameObject ChestOpen;
+    public GameObject ChestOpen;
     private GameObject player;
 
 
@@ -15,7 +15,6 @@ public class OpenChest : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        ChestOpen = GameObject.FindGameObjectWithTag("chestopen");
     }
 
     // Update is called once per frame
@@ -26,10 +25,13 @@ public class OpenChest : MonoBehaviour
             var playerProperties = player.GetComponent<PlayerProperties>();
             if (playerProperties.keys >= 1)
             {
+                Debug.Log(gameObject.transform.position);
                 player.GetComponent<PlayerProperties>().SetCoins(playerProperties.coins + 5);
                 player.GetComponent<PlayerProperties>().SetKeys(playerProperties.keys - 1);
-                Destroy(gameObject);
                 GameObject newChest = Instantiate(ChestOpen);
+                newChest.transform.position = gameObject.transform.position;
+                Debug.Log(newChest.transform.position);
+                Destroy(gameObject);
             }
         }
     }

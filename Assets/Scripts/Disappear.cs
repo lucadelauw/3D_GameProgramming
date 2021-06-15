@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Disappear : MonoBehaviour
 {
-    static int counter = 0;
+    private int counter = 0;
     private bool hasCollided = false;
     private string labelText = "";
     private GameObject player;
