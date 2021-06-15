@@ -16,7 +16,7 @@ public class TeleportLevel : MonoBehaviour
     {
         if (other.CompareTag("Player") && !activatedFlag)
         {
-            if (other.GetComponent<PlayerProperties>().coins >= 15)
+            if (other.GetComponent<PlayerProperties>().coins >= 15 || true)
             {
                 other.GetComponent<PlayerProperties>().SetCoins(other.GetComponent<PlayerProperties>().coins - 15);
                 activatedFlag = true;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,13 @@ public class GameManager : MonoBehaviour
                 player.transform.rotation = spawnPoint.transform.rotation;
                 triggeredFlag = true;
             }
+        }
+
+        if (SceneManager.GetActiveScene().name == "moon")
+        {
+            player.transform.localScale = new Vector3(10, 10, 10);
+            player.GetComponent<PlayerMovement>().walkSpeed = 50f;
+            player.GetComponent<PlayerMovement>().runSpeed = 100f;
         }
     }
 }
