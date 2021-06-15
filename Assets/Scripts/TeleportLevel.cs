@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,33 @@ using UnityEngine.SceneManagement;
 
 public class TeleportLevel : MonoBehaviour
 {
-    public string LevelToLoad;
+    public string levelToLoad;
+    private AsyncOperation sceneAsync;
+    private GameObject objectToMove;
+    private bool activatedFlag = false;
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.CompareTag("Player") && !activatedFlag)
         {
-            SceneManager.LoadScene(LevelToLoad);
+            activatedFlag = true;
+            objectToMove = other.gameObject; 
+            Debug.Log("starting teleport");
+            LoadScene(levelToLoad);
         }
+    }
+    
+    private void LoadScene(string sceneName)
+    {
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(levelToLoad, LoadSceneMode.Additive);
+        asyncOperation.completed += OnLoadOperationComplete;
+    }
+
+    private void OnLoadOperationComplete(AsyncOperation operation)
+    {
+        var sceneToLoad = SceneManager.GetSceneByName(levelToLoad);
+        SceneManager.MoveGameObjectToScene(objectToMove, sceneToLoad);
+        SceneManager.SetActiveScene(sceneToLoad);
+        SceneManager.UnloadSceneAsync("Earth");
     }
 }
