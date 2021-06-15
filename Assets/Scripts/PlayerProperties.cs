@@ -9,10 +9,10 @@ public class PlayerProperties : MonoBehaviour
     public int keys { get; private set; }
     public int coins { get; private set; }
 
-    [SerializeField]
-    private GameObject coinsTextField;
-    [SerializeField]
-    private GameObject keysTextField;
+    
+    public GameObject coinsTextField;
+    
+    public GameObject keysTextField;
 
     public void Start()
     {
