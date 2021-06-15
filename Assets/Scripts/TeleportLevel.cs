@@ -16,10 +16,14 @@ public class TeleportLevel : MonoBehaviour
     {
         if (other.CompareTag("Player") && !activatedFlag)
         {
-            activatedFlag = true;
-            objectToMove = other.gameObject; 
-            Debug.Log("starting teleport");
-            LoadScene(levelToLoad);
+            if (other.GetComponent<PlayerProperties>().coins >= 15)
+            {
+                other.GetComponent<PlayerProperties>().SetCoins(other.GetComponent<PlayerProperties>().coins - 15);
+                activatedFlag = true;
+                objectToMove = other.gameObject; 
+                Debug.Log("starting teleport");
+                LoadScene(levelToLoad);
+            }
         }
     }
     
