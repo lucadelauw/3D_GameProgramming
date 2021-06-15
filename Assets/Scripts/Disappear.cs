@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Disappear : MonoBehaviour
 {
-    private int counter = 0;
     private bool hasCollided = false;
     private string labelText = "";
     private GameObject player;
@@ -19,10 +18,10 @@ public class Disappear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var playerProperties = player.GetComponent<PlayerProperties>();
         if (Input.GetKey("e") && hasCollided)
         {
-            counter++;
-            player.GetComponent<PlayerProperties>().SetKeys(counter);
+            player.GetComponent<PlayerProperties>().SetKeys(playerProperties.keys + 1);
             Destroy(gameObject);
         }
     }
