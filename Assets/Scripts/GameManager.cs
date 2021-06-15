@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "moon")
         {
-            player.transform.localScale = new Vector3(10, 10, 10);
-            player.GetComponent<PlayerMovement>().walkSpeed = 50f;
-            player.GetComponent<PlayerMovement>().runSpeed = 100f;
+            player.transform.localScale = new Vector3(100, 100, 100);
+            player.GetComponent<PlayerMovement>().walkSpeed = 500f;
+            player.GetComponent<PlayerMovement>().runSpeed = 1000f;
         }
     }
 }
